@@ -1,0 +1,26 @@
+{
+  "name": "topcat2",
+  "version": "1.0.0",
+  "description": "Cat Ranking Application (Angular2 + Firebase)",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "tsd update",
+    "serve": "webpack-dev-server"
+  },
+  "author": "Uri Shaked",
+  "license": "ISC",
+  "dependencies": {
+    "angular2": "2.0.0-alpha.46",
+    "firebase": "2.3.1",
+    "lodash": "3.10.1",
+    "reflect-metadata": "0.1.2"
+  },
+  "devDependencies": {
+    "ts-loader": "0.7.1",
+    "tsd": "^0.6.5",
+    "typescript": "1.6.2",
+    "webpack": "1.12.6",
+    "webpack-dev-server": "1.12.1",
+    "webpack-livereload-plugin": "0.4.0"
+  }
+}
