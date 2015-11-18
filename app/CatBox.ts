@@ -1,3 +1,5 @@
+/// <reference path="Cat.ts" />
+
 import {Component, Input} from 'angular2/angular2';
 
 @Component({
@@ -8,11 +10,11 @@ import {Component, Input} from 'angular2/angular2';
 			<img class="topcat-image" src="{{cat.photo}}"/>
 
 			<div class="topcat-rating-controls">
-				<a ng-click="vm.likeCat(cat)" href="">
+				<a (click)="upvote()">
 					<i class="fa fa-thumbs-up"></i>
 				</a>
 
-				<a ng-click="vm.unlikeCat(cat)" href="">
+				<a (click)="downvote()">
 					<i class="fa fa-thumbs-down"></i>
 				</a>
 
@@ -24,8 +26,22 @@ import {Component, Input} from 'angular2/angular2';
 	`
 })
 export class CatBox {
-	@Input() cat:any;
+	@Input() cat:Cat;
 
 	constructor() {
+	}
+
+	upvote() {
+		this.updateVotes(this.cat.votes + 1);
+	}
+
+	downvote() {
+		this.updateVotes(this.cat.votes - 1);
+	}
+
+	private updateVotes(newValue:number) {
+		new Firebase(this.cat.$url).update({
+			votes: newValue
+		})
 	}
 }

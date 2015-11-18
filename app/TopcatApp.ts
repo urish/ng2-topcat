@@ -1,6 +1,9 @@
+/// <reference path="Cat.ts" />
+
 import {Component, ChangeDetectorRef} from 'angular2/angular2';
 import {CatBox} from './CatBox';
-import * as _ from 'lodash';
+import {toArray} from './utils/toArray';
+import {sortByOrder} from 'lodash';
 import * as Firebase from 'firebase';
 
 @Component({
@@ -14,12 +17,12 @@ import * as Firebase from 'firebase';
 })
 export class TopcatApp {
 	fbRef:Firebase;
-	cats:any;
+	cats:Array<Cat>;
 
 	constructor(private ref:ChangeDetectorRef) {
 		this.fbRef = new Firebase('https://topcat.firebaseio.com/cats');
-		this.fbRef.once('value', snapshot => {
-			this.cats = _.values(snapshot.val());
+		this.fbRef.on('value', snapshot => {
+			this.cats = sortByOrder(<Cat[]>toArray(snapshot), ['votes'], ['desc']);
 			this.ref.detectChanges();
 		});
 	}
