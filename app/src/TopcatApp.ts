@@ -3,7 +3,7 @@
 import {Component, ChangeDetectorRef} from 'angular2/angular2';
 import {CatBox} from './CatBox';
 import {CatModel} from './CatModel';
-import * as _ from 'lodash';
+import {sortedByVotes} from './utils';
 
 @Component({
 	selector: 'topcat-app',
@@ -21,7 +21,7 @@ export class TopcatApp {
 
 	constructor(ref:ChangeDetectorRef, private model:CatModel) {
 		model.catsUpdated.subscribe((cats: Cat[]) => {
-			this.cats = _.sortByOrder(cats, ['votes'], ['desc']);
+			this.cats = sortedByVotes(cats);
 			ref.detectChanges();
 		});
 	}

@@ -27,7 +27,7 @@ import {Component, Input, Output, EventEmitter} from 'angular2/angular2';
 })
 export class CatBox {
 	@Input() cat:Cat;
-	@Output() vote = new EventEmitter<any>();
+	@Output() vote = new EventEmitter<number>();
 
 	constructor() {
 	}
