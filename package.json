@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "tsd update",
-    "serve": "webpack-dev-server"
+    "serve": "webpack-dev-server",
+    "build": "webpack"
   },
   "author": "Uri Shaked",
   "license": "MIT",

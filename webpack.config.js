@@ -9,12 +9,17 @@ module.exports = {
 
 	plugins: [
 		new LiveReloadPlugin(),
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				warnings: false
+			}
+		})
 	],
 
-	entry: './app/main.ts',
+	entry: './app/src/main.ts',
+
 	output: {
-		path: path.join(__dirname, 'dist'),
+		path: path.join(__dirname, 'app/dist'),
 		publicPath: 'dist/',
 		filename: 'app.js'
 	},
