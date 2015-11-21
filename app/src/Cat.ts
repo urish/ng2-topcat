@@ -1,7 +1,7 @@
 interface Cat {
 	id: string;
 	votes: number;
-	image: string;
+	photo: string;
 	title: string;
 	owner: string;
 }
