@@ -14,7 +14,8 @@
     "angular2": "2.0.0-alpha.46",
     "firebase": "2.3.1",
     "lodash": "3.10.1",
-    "reflect-metadata": "0.1.2"
+    "reflect-metadata": "0.1.2",
+    "zone.js": "0.5.8"
   },
   "devDependencies": {
     "ts-loader": "0.7.1",
