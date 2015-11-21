@@ -1,6 +1,6 @@
 /// <reference path="Cat.ts" />
 
-import {Component, ChangeDetectorRef} from 'angular2/angular2';
+import {Component} from 'angular2/angular2';
 import {CatBox} from './CatBox';
 import {CatModel} from './CatModel';
 import {sortedByVotes} from './utils';
@@ -19,10 +19,9 @@ import {sortedByVotes} from './utils';
 export class TopcatApp {
 	cats:Cat[];
 
-	constructor(ref:ChangeDetectorRef, private model:CatModel) {
-		model.catsUpdated.subscribe((cats: Cat[]) => {
+	constructor(private model:CatModel) {
+		model.catsUpdated.subscribe((cats:Cat[]) => {
 			this.cats = sortedByVotes(cats);
-			ref.detectChanges();
 		});
 	}
 
