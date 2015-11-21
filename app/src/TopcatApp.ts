@@ -1,6 +1,6 @@
 /// <reference path="Cat.ts" />
 
-import {Component, ChangeDetectorRef, EventEmitter} from 'angular2/angular2';
+import {Component, ChangeDetectorRef} from 'angular2/angular2';
 import {CatBox} from './CatBox';
 import {CatModel} from './CatModel';
 import * as _ from 'lodash';
