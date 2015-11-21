@@ -1,29 +1,33 @@
 /// <reference path="Cat.ts" />
 
-import {Component, ChangeDetectorRef} from 'angular2/angular2';
+import {Component, ChangeDetectorRef, EventEmitter} from 'angular2/angular2';
 import {CatBox} from './CatBox';
-import {toArray} from './utils/toArray';
-import {sortByOrder} from 'lodash';
-import * as Firebase from 'firebase';
+import {CatModel} from './CatModel';
+import * as _ from 'lodash';
 
 @Component({
 	selector: 'topcat-app',
 	template: `
 		<div class="topcat-container">
-			<cat-box [cat]="cat"  *ng-for="#cat of cats"></cat-box>
+			<cat-box [cat]="cat" (vote)="voteForCat(cat, $event)" *ng-for="#cat of cats">
+			</cat-box>
 		</div>
 	`,
-	directives: [CatBox]
+	directives: [CatBox],
+	providers: [CatModel]
 })
 export class TopcatApp {
-	fbRef:Firebase;
-	cats:Array<Cat>;
+	cats:Cat[];
 
-	constructor(private ref:ChangeDetectorRef) {
-		this.fbRef = new Firebase('https://topcat.firebaseio.com/cats');
-		this.fbRef.on('value', snapshot => {
-			this.cats = sortByOrder(<Cat[]>toArray(snapshot), ['votes'], ['desc']);
-			this.ref.detectChanges();
+	constructor(ref:ChangeDetectorRef, private model:CatModel) {
+		model.catsUpdated.subscribe((cats: Cat[]) => {
+			this.cats = _.sortByOrder(cats, ['votes'], ['desc']);
+			ref.detectChanges();
 		});
+	}
+
+	voteForCat(cat, vote) {
+		cat.votes += vote;
+		this.model.updateCat(cat);
 	}
 }

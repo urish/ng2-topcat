@@ -1,5 +1,7 @@
 interface Cat {
-	$url: string;
+	id: string;
 	votes: number;
 	image: string;
+	title: string;
+	owner: string;
 }

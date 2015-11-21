@@ -1,6 +1,6 @@
 /// <reference path="Cat.ts" />
 
-import {Component, Input} from 'angular2/angular2';
+import {Component, Input, Output, EventEmitter} from 'angular2/angular2';
 
 @Component({
 	selector: 'cat-box',
@@ -27,21 +27,17 @@ import {Component, Input} from 'angular2/angular2';
 })
 export class CatBox {
 	@Input() cat:Cat;
+	@Output() vote = new EventEmitter<any>();
 
 	constructor() {
 	}
 
 	upvote() {
-		this.updateVotes(this.cat.votes + 1);
+		// Note: `next` will be renamed to `emit` in alpha.47
+		this.vote.next(1);
 	}
 
 	downvote() {
-		this.updateVotes(this.cat.votes - 1);
-	}
-
-	private updateVotes(newValue:number) {
-		new Firebase(this.cat.$url).update({
-			votes: newValue
-		})
+		this.vote.next(-1);
 	}
 }
