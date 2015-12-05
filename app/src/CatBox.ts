@@ -33,11 +33,10 @@ export class CatBox {
 	}
 
 	upvote() {
-		// Note: `next` will be renamed to `emit` in alpha.47
-		this.vote.next(1);
+		this.vote.emit(1);
 	}
 
 	downvote() {
-		this.vote.next(-1);
+		this.vote.emit(-1);
 	}
 }

@@ -11,8 +11,7 @@ export class CatModel {
 		this.fbRef = new Firebase('https://topcat.firebaseio.com/cats');
 		this.fbRef.on('value', snapshot => {
 			const cats = <Cat[]>_.values(snapshot.val());
-			// Note: `next` will be renamed to `emit` in alpha.47
-			this.catsUpdated.next(cats);
+			this.catsUpdated.emit(cats);
 		});
 	}
 

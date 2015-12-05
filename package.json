@@ -11,18 +11,18 @@
   "author": "Uri Shaked",
   "license": "MIT",
   "dependencies": {
-    "angular2": "2.0.0-alpha.46",
-    "firebase": "2.3.1",
+    "angular2": "2.0.0-alpha.47",
+    "firebase": "2.3.2",
     "lodash": "3.10.1",
     "reflect-metadata": "0.1.2",
     "zone.js": "0.5.8"
   },
   "devDependencies": {
-    "ts-loader": "0.7.1",
+    "ts-loader": "0.7.2",
     "tsd": "^0.6.5",
-    "typescript": "1.6.2",
+    "typescript": "1.7.3",
     "webpack": "1.12.6",
-    "webpack-dev-server": "1.12.1",
+    "webpack-dev-server": "1.14.0",
     "webpack-livereload-plugin": "0.4.0"
   }
 }
