@@ -1,6 +1,6 @@
 /// <reference path="Cat.ts" />
 
-import {Component} from 'angular2/angular2';
+import {Component} from 'angular2/core';
 import {CatBox} from './CatBox';
 import {CatModel} from './CatModel';
 import {sortedByVotes} from './utils';
@@ -9,7 +9,7 @@ import {sortedByVotes} from './utils';
 	selector: 'topcat-app',
 	template: `
 		<div class="topcat-container">
-			<cat-box [cat]="cat" (vote)="voteForCat(cat, $event)" *ng-for="#cat of cats">
+			<cat-box [cat]="cat" (vote)="voteForCat(cat, $event)" *ngFor="#cat of cats">
 			</cat-box>
 		</div>
 	`,

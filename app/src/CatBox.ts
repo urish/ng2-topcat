@@ -1,6 +1,6 @@
 /// <reference path="Cat.ts" />
 
-import {Component, Input, Output, EventEmitter} from 'angular2/angular2';
+import {Component, Input, Output, EventEmitter} from 'angular2/core';
 
 @Component({
 	selector: 'cat-box',

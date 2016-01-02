@@ -1,4 +1,4 @@
-import {Injectable, EventEmitter} from 'angular2/angular2';
+import {Injectable, EventEmitter} from 'angular2/core';
 import * as Firebase from 'firebase';
 import * as _ from 'lodash';
 
